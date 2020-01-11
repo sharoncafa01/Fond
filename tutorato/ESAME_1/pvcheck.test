@@ -1,0 +1,198 @@
+# File di test per la prova di laboratorio del 20/07/2018.
+
+[.TEST]
+Esempio del testo
+
+[.ARGS]
+.FILE
+
+[.FILE]
+informatica fondamenti
+aiuola abcd
+qwertytrewq senzasignificato
+altra riga
+ultima riga
+
+[MAX-VOCALI]
+7
+
+[PALINDROMI]
+1
+
+[FILTRO]
+informti
+fonmnti
+iuol
+ltr
+rig
+ultim
+rig
+
+[DUPLICATI]
+SI
+
+[ORDINAMENTO]
+abcd
+aiuola
+altra
+fondamenti
+informatica
+qwertytrewq
+riga
+riga
+senzasignificato
+ultima
+
+#-------------------------------------------------------------------
+
+[.TEST]
+Meno di 4 righe
+
+[.ARGS]
+.FILE
+
+[.FILE]
+una riga
+soltanto qui
+
+[MAX-VOCALI]
+3
+
+[PALINDROMI]
+0
+
+[FILTRO]
+un
+rig
+soltnto
+qui
+
+[DUPLICATI]
+NO
+
+[ORDINAMENTO]
+qui
+riga
+soltanto
+una
+
+#-------------------------------------------------------------------
+
+[.TEST]
+Parole da 20 lettere
+
+[.ARGS]
+.FILE
+
+[.FILE]
+xaabbccddeeddccbbaax xaabbccddeeddccbbaax
+xaabbccddeeddccbbaax xaabbccddeeddccbbaax
+
+[MAX-VOCALI]
+6
+
+[PALINDROMI]
+4
+
+[FILTRO]
+xx
+xx
+xx
+xx
+
+[DUPLICATI]
+SI
+
+[ORDINAMENTO]
+xaabbccddeeddccbbaax
+xaabbccddeeddccbbaax
+xaabbccddeeddccbbaax
+xaabbccddeeddccbbaax
+
+#-------------------------------------------------------------------
+
+[.TEST]
+Parole da 20 lettere
+
+[.ARGS]
+.FILE
+
+[.FILE]
+xxaabbccddeeddccbbaa yyaabbccddeeddccbbaa
+zzaabbccddeeddccbbaa wwaabbccddeeddccbbaa
+aaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbb
+
+[MAX-VOCALI]
+20
+
+[PALINDROMI]
+2
+
+[FILTRO]
+xx
+yy
+zz
+ww
+
+[DUPLICATI]
+NO
+
+[ORDINAMENTO]
+aaaaaaaaaaaaaaaaaaaa
+bbbbbbbbbbbbbbbbbbbb
+wwaabbccddeeddccbbaa
+xxaabbccddeeddccbbaa
+yyaabbccddeeddccbbaa
+zzaabbccddeeddccbbaa
+
+#-------------------------------------------------------------------
+
+[.TEST]
+Corte
+
+[.ARGS]
+.FILE
+
+[.FILE]
+xx nn
+aa bb
+ff gg
+ll mm
+ii hh
+oo mm
+uu zz
+
+[MAX-VOCALI]
+2
+
+[PALINDROMI]
+14
+
+[FILTRO]
+xx
+nn
+oo
+mm
+uu
+zz
+
+[DUPLICATI]
+SI
+
+[ORDINAMENTO]
+aa
+bb
+ff
+gg
+hh
+ii
+ll
+mm
+mm
+nn
+oo
+uu
+xx
+zz
+
+#-------------------------------------------------------------------

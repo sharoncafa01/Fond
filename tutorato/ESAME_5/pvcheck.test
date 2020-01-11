@@ -1,0 +1,293 @@
+#!./pvcheck
+
+#######################################################################
+# EXAMPLE WITH MULTIPLE TEST CASES
+#######################################################################
+
+# Each test is introduced by the special section [.TEST].  Usually,
+# each test has different inputs and outputs.  Outputs are defined by
+# ordinary sections.  The input can be specified:
+#
+# - with the special section [.INPUT] that allows to specify text to
+#   be sent to the program via its standard input;
+#
+# - with the special section [.ARGS] that allow to specify additional
+#   arguments to be passed with the command line (one extra argument
+#   per line).
+
+############################################################
+
+[.TEST]
+Esempio nel testo
+
+[.ARGS]
+.FILE
+
+[.FILE]
+100 190
+90 200 P U
+90 280 P A
+80 300 M E
+0 10
+0 100 P A
+10 110 M E
+
+[ALTIMETRIA]
+3
+2
+
+[MAX-COUNT]
+2
+
+[LUNGHEZZA]
+117
+
+[ORDINAMENTO]
+0 100 P A
+10 110 M E
+90 200 P U
+90 280 P A
+80 300 M E
+
+############################################################
+
+[.TEST]
+3 percorsi da 2 tratte ciascuno
+
+[.ARGS]
+.FILE
+
+[.FILE]
+0 10
+10 10 P A
+10 0 P A
+0 20
+20 20 M E
+20 0 M E
+0 30
+30 30 P U
+30 0 M U
+
+[ALTIMETRIA]
+3
+3
+
+[MAX-COUNT]
+2
+
+[LUNGHEZZA]
+60
+
+[ORDINAMENTO]
+10 0 P A
+10 10 P A
+20 0 M E
+20 20 M E
+30 0 M U
+30 30 P U
+
+############################################################
+
+[.TEST]
+4 percorsi, 1 tratta per ciascun livello di distanza, 2 tratte tra [10, 20)
+
+[.ARGS]
+.FILE
+
+[.FILE]
+0 0
+0 10 P A
+0 20 P A
+0 0
+0 5 P A
+0 25 P A
+0 0
+0 30 P A
+0 70 P A
+0 120 P A
+0 180 P A
+0 250 P A
+0 330 P A
+0 0
+0 90 P A
+0 190 P A
+
+[ALTIMETRIA]
+12
+0
+
+[MAX-COUNT]
+2
+
+[LUNGHEZZA]
+330
+
+[ORDINAMENTO]
+0 5 P A
+0 10 P A
+0 20 P A
+0 25 P A
+0 30 P A
+0 70 P A
+0 90 P A
+0 120 P A
+0 180 P A
+0 190 P A
+0 250 P A
+0 330 P A
+
+############################################################
+
+[.TEST]
+1 percorso, 6 tratte tutte le combinazioni
+
+[.ARGS]
+.FILE
+
+[.FILE]
+0 0
+0 30 P U
+0 10 M U
+0 100 P E
+0 40 M E
+0 160 P A
+0 80 M A
+
+[ALTIMETRIA]
+3
+3
+
+[MAX-COUNT]
+1
+
+[LUNGHEZZA]
+400
+
+[ORDINAMENTO]
+0 10 M U
+0 30 P U
+0 40 M E
+0 80 M A
+0 100 P E
+0 160 P A
+
+############################################################
+
+[.TEST]
+6 percorsi, 6 tratte tutte le combinazioni
+
+[.ARGS]
+.FILE
+
+[.FILE]
+0 0
+0 30 P U
+0 0
+0 20 M U
+0 0
+0 90 P E
+0 0
+0 60 M E
+0 0
+0 120 P A
+0 0
+0 80 M A
+
+[ALTIMETRIA]
+3
+3
+
+[MAX-COUNT]
+1
+
+[LUNGHEZZA]
+120
+
+[ORDINAMENTO]
+0 20 M U
+0 30 P U
+0 60 M E
+0 80 M A
+0 90 P E
+0 120 P A
+
+############################################################
+
+[.TEST]
+6 percorsi, 6 tratte tutte le combinazioni
+
+[.ARGS]
+.FILE
+
+[.FILE]
+0 0
+0 15 M A
+0 0
+0 10 P A
+0 0
+0 13 M E
+0 0
+0 12 P E
+0 0
+0 11 M U
+0 0
+0 14 P U
+
+[ALTIMETRIA]
+3
+3
+
+[MAX-COUNT]
+6
+
+[LUNGHEZZA]
+15
+
+[ORDINAMENTO]
+0 10 P A
+0 11 M U
+0 12 P E
+0 13 M E
+0 14 P U
+0 15 M A
+
+############################################################
+
+[.TEST]
+6 percorsi, 6 tratte tutte le combinazioni, destinazioni negative
+
+[.ARGS]
+.FILE
+
+[.FILE]
+0 0
+0 -15 M A
+0 0
+0 -10 P A
+0 0
+0 -13 M E
+0 0
+0 -12 P E
+0 0
+0 -11 M U
+0 0
+0 -14 P U
+
+[ALTIMETRIA]
+3
+3
+
+[MAX-COUNT]
+6
+
+[LUNGHEZZA]
+15
+
+[ORDINAMENTO]
+0 -10 P A
+0 -11 M U
+0 -12 P E
+0 -13 M E
+0 -14 P U
+0 -15 M A
+
