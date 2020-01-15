@@ -8,8 +8,8 @@ int main()
 
     dollaro = (eu * tasso);
 
-    printf("Importo in euro: %.2f/n", eu);
-    printf("Importo in dollari: %.2f/n", dollaro);
+    printf("Importo in euro: %.2f\n", eu);
+    printf("Importo in dollari: %.2f\n", dollaro);
 
     return 0;
 
