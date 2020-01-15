@@ -9,7 +9,7 @@ int main ()
     double IPO;
 
 
-    IPO = sqrt (C1*C1 + C2*C2);
+    IPO = sqrt(C1*C1 + C2*C2);
 
     printf("Il valore dell'ipotenusa è: %.2f\n", IPO);
 
