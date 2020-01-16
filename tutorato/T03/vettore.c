@@ -1,79 +1,70 @@
-#include <stdio.h>
 #include <stdlib.h>
-#define MAXVOTO 30
-#define MINVOTO 18
-#define NMAX 100
-#define NVOTI (MAXVOTO - MINVOTO +1)
+#include <stdio.h>
 
-int main()
-{
+#define MINVOTO 18
+#define MAXVOTO 30
+#define NVOTI   (MAXVOTO - MINVOTO + 1)
+#define NMAX    100
+
+int main() {
     char s[80];
-    int n, i;
-    int voto;
+    int n;
+    int voti[NMAX];
+    int i, voto;
 
     printf("Immettere valore: \n");
     fgets(s, sizeof(s), stdin);
     n = atoi(s);
 
-    if (n <= 0)   {
-        printf("[ERRORE]\n");
+
+    if (n <= 0 || n > NMAX) {
+        printf("[RISULTATO]\nerrore\n");
+        return 0;
     }
-    return 0;
-
-    if (n > NMAX)  {
-        printf("[ERRORE]\n");
-    }
-    return 0;
 
 
-    int VOTI[NMAX];
     i = 0;
-
     do {
         printf("Immettere voto: \n");
         fgets(s, sizeof(s), stdin);
         voto = atoi(s);
 
-        if (voto > MINVOTO) {
-            if (voto < MAXVOTO)
-            }
-        {
-            VOTI[i] = voto;
+
+        if (voto >= MINVOTO && voto <= MAXVOTO) {
+            voti[i] = voto;
             i++;
         }
-    }
-    while (i < n);
+    } while (i < n);
 
 
-    for ( i = 0; i < n; i++);
-        printf("[VALORI]\n");
-        printf("%i\n", VOTI[i]);
+    printf("[VALORI]\n");
+    for (i = 0; i < n; i++)
+        printf("%d\n", voti[i]);
 
-    int min = ( VOTI[0]);
-    for ( i=1; i<n; i++)
-      if (VOTI[i] < min) {
-          min = VOTI[i];
-      }
+
+    int min = voti[0];
+    for (i = 1; i < n; i++)
+        if (voti[i] < min)
+            min = voti[i];
     printf("[MINIMO]\n");
-    printf("%i\n", min);
+    printf("%d\n", min);
 
-    int freq[NVOTI]= 0
-    for(i= 0; i < n; i++);
-        freq[VOTI[i] - MINVOTO]++;
 
-    printf("[FREQUENZA\n");
+    int freq[NVOTI] = {0};
+    for (i = 0; i < n; i++)
+        freq[voti[i] - MINVOTO]++;
+    printf("[FREQUENZE]\n");
+    for (i = 0; i < NVOTI; i++)
+        printf("%d\n", freq[i]);
 
-    for ( i= 0; i< NVOTI; i++);
-       printf("%i\n", freq[i]);
 
-    int MAXFREQ= freq[0];
+    int maxIndice = 0;
+    for (i = 1; i < NVOTI; i++)
+        if (freq[i] > freq[maxIndice])
+            maxIndice = i;
 
-    for ( i= 1; i< NVOTI; i++);
-       if (freq[i]> MAXFREQ) {
-           MAXFREQ = freq[i];
-       }
     printf("[MAXFREQ]\n");
-    printf("%i\n", MAXFREQ + MINVOTO);
+    printf("%d\n", maxIndice + MINVOTO);
 
-return 0;
+    return 0;
 }
