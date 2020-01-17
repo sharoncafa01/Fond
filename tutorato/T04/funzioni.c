@@ -10,7 +10,7 @@ void leggi_voti(int voti[], int n);
 void stampa_voti(int voti[], int n);
 int minimo(int voti[], int n);
 void FREQUENZE(int voti[], int n, int freq[]);
-int MAXFREQ(int voti[], int n, int freq[]);
+int MAXFREQ(int freq[]);
 
 int main()
 {
@@ -40,7 +40,7 @@ int main()
     FREQUENZE(voti, n, freq);
 
     printf("[MAXFREQ]\n");
-    MAXFREQ(voti, n, freq);
+    printf("%d\n", MAXFREQ(freq));
 
 return 0;
 }
@@ -92,20 +92,23 @@ int minimo(int voti[], int n)
 void FREQUENZE(int voti[], int n, int freq[])
 {
     int i;
-    for(i = 0; i < n; i++) {
-       freq[voti[i] - MINVOTO]++;
+    for (i = 0; i < n; i++){
+        freq[voti[i] - MINVOTO]++;
     }
-    for(i = 0; i < n; i++)
-       printf("%d\n", freq[i]);
+    for (i = 0; i < NVOTI; i++){
+        printf("%d\n", freq[i]);
+    }
 }
 
-int MAXFREQ(int voti[], int n, int freq[])
-{
-    int i, MAXFREQ = 0;
 
-    for(i = 0; i < NVOTI; i++)
+int MAXFREQ(int freq[])
+{
+    int i;
+    int MAXFREQ = 0;
+
+    for(i = 1; i < NVOTI; i++)
        if (freq[i] > freq[MAXFREQ]) {
            MAXFREQ = i;
        }
-    return MAXFREQ + MINVOTO;
+    return (MAXFREQ + MINVOTO);
 }
