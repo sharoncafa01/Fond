@@ -4,7 +4,7 @@
 int trova_ultimo_separatore(const char *percorso)
 {
     int pos;
-    pos = (strlen(percorso)-1);
+    pos = (strlen(percorso) - 1);
 
     while (pos >= 0 && percorso[pos] != '/')
           pos--;
@@ -29,7 +29,7 @@ void dirname(const char *percorso, char *b)
     int i;
     int n = trova_ultimo_separatore(percorso);
 
-    if (n > 0 ) {
+    if (n >= 0 ) {
        for(i = 0; i < n; i++)
           b[i] = percorso[i];
           b[n] = '\0';
