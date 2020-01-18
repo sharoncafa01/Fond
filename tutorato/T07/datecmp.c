@@ -1,6 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+
 int main(int argc, char *argv[])
 {
-    struct data d1, d2;
+    struct data d1[200], d2[200];
     int n1, n2, cmp;
 
     if (argc != 3) {
@@ -14,7 +20,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    n2 = sscanf(argv[2], "%d-%d-%d", &d2.a, %d2.m, %d2.g);
+    n2 = sscanf(argv[2], "%d-%d-%d", &d2.a, &d2.m, &d2.g);
     if (n2 != 3) {
         printf("Conversione data 2 errata\n");
         return -1;
