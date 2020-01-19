@@ -3,10 +3,9 @@
 #include <string.h>
 
 
-
 int main(int argc, char *argv[])
 {
-    struct data d1[200], d2[200];
+    struct data d1, d2;
     int n1, n2, cmp;
 
     if (argc != 3) {
