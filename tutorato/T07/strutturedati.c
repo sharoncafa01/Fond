@@ -4,28 +4,28 @@
 
 #define NMAX 10
 
-struct punto_t {
+struct punto {
     double x;
     double y;
-}
+};
 
-struct rettangolo_t {
+struct rettangolo {
     struct punto_A;
     struct punto_B;
-}
+};
 
-struct punto_t leggi_punto(void);
-void stampa_punto(struct punto_t p);
-double distanza(struct punto_t p1, struct punto_t p2);
-int interno(struct rettangolo_t r, struct punto_t);
-double area_rettangolo(struct rettangolo_t r);
-void indici_max_dist(struct punto_t vett[], int *max_i, int *max_j);
+struct punto leggi_punto(void);
+void stampa_punto(struct punto p);
+double distanza(struct punto p1, struct punto p2);
+int interno(struct rettangolo r, struct punto);
+double area_rettangolo(struct rettangolo r);
+void indici_max_dist(struct punto vett[], int *max_i, int *max_j);
 
 int main()
 {
-    struct punto_t vett[NMAX];
-    struct punto_t origine = {0 , 0};
-    struct rettangolo_t rett;
+    struct punto vett[NMAX];
+    struct punto origine = {0 , 0};
+    struct rettangolo rett;
     unsigned int n;
     char s[80];
     int max_i, max_j = 0;
@@ -34,14 +34,14 @@ int main()
     fgets(s, sizeof(s), stdin);
     n = atoi(s);
 
-    if (n >= 10) {
+    if (n >= NMAX) {
         n = NMAX;
     }
 
     int i;
     int d = 0;
 
-    for(i = 0, i < n, i++){
+    for(i = 0, i < n, i++) {
         vett[i] = leggi_punto();
     }
 
@@ -52,8 +52,8 @@ int main()
 
     printf("[DISTANZE]\n");
     for(i = 0, i < n, i++){
-        d = distanza(origine, vett[i];
-        printf("%.3lf", d));
+        d = distanza(origine, vett[i]);
+        printf("%.3lf", d);
     }
 
     printf("Valore A del rettangolo:\n");
@@ -63,7 +63,7 @@ int main()
 
     printf("[INTERNI]\n");
     for(i = 0; i < n, i++){
-        if (interno(vetti[i], rett)){
+        if (interno(vett[i], rett)){
             stampa_punto(vett[i]);
         }
     }
@@ -73,16 +73,57 @@ int main()
 
     printf("[COPPIA]\n");
     indici_max_dist(vett, n, &max_i, &max_j);
-    stampa_punto(max_i);
-    stampa_punto(max_j);
+    stampa_punto(vett[max_i]);
+    stampa_punto(vett[max_j]);
 
     return 0;
 }
 
-struct punto_t leggi_punto(void){
+struct punto leggi_punto(void){
     struct punto p;
     char s[80];
 
     fgets(s, sizeof(s), stdin);
-    sscanf(s, "%lf , %lf", &p.x, &p.y)
+    sscanf(s, "%lf , %lf", &p.x, &p.y);
+    return p;
+}
+
+void stampa_punto(struct punto p) {
+     printf("(%.3lf , %.3lf)\n", p.x, p.y);
+}
+
+double distanza(struct punto p1, struct punto p2) {
+       return sqrt((p1.x - p2.x)(p1.x - p2.x) - (p1.y - p2.y)(p1.y - p2.y))
+}
+
+int interno(struct punto p, struct rettangolo r) {
+    if p.x >= r.A.x && p.y <=  r.B.x && p.y >= r.B.y && p.y <= r.A.y
+       return 1;
+    else
+       return 0;
+}
+
+double area_rettangolo(struct rettangolo r) {
+      double b, h;
+      b = r.B.x - r.A.x;
+      h = r.A.y - r.B.y;
+
+return b*h;
+}
+
+int indici_max_dist(punto vett[], int *max_i, int *max_j){
+    double max, dist;
+    int i, j;
+    *max_i=0;
+    *max_j=0;
+
+    max = distanza(vett[0]; vett[1]);
+    for(i = 0; i < (n-1); i++)
+       for(j = i+1; i < (n+1), j++){
+           dist = distanza(vett[i], vett[j]);
+           if (dist > max) {
+               *max_i = vett[i];
+               *max_j = vett[j]
+           }
+         }
 }
