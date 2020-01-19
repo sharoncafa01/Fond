@@ -10,25 +10,25 @@ struct punto {
 };
 
 struct rettangolo {
-    struct punto_A;
-    struct punto_B;
+    struct punto A;
+    struct punto B;
 };
 
 struct punto leggi_punto(void);
 void stampa_punto(struct punto p);
 double distanza(struct punto p1, struct punto p2);
-int interno(struct rettangolo r, struct punto);
+int interno(struct rettangolo r, struct punto p);
 double area_rettangolo(struct rettangolo r);
-void indici_max_dist(struct punto vett[], int *max_i, int *max_j);
+void indici_max_dist(struct punto vett[], int lung; int *max_i, int *max_j);
 
 int main()
 {
     struct punto vett[NMAX];
-    struct punto origine = {0 , 0};
+    struct punto origine = {0,0};
     struct rettangolo rett;
     unsigned int n;
     char s[80];
-    int max_i, max_j = 0;
+    int maxI = 0, maxJ = 0;
 
     printf("Inserire un valore:\n");
     fgets(s, sizeof(s), stdin);
@@ -41,17 +41,17 @@ int main()
     int i;
     int d = 0;
 
-    for(i = 0, i < n, i++) {
+    for(i = 0; i < n; i++) {
         vett[i] = leggi_punto();
     }
 
     printf("[PUNTI]\n");
-    for(i = 0, i < n, i++){
+    for(i = 0; i < n; i++){
        stampa_punto(vett[i]);
     }
 
     printf("[DISTANZE]\n");
-    for(i = 0, i < n, i++){
+    for(i = 0; i < n; i++){
         d = distanza(origine, vett[i]);
         printf("%.3lf", d);
     }
@@ -62,8 +62,7 @@ int main()
     rett.B=leggi_punto();
 
     printf("[INTERNI]\n");
-    for(i = 0; i < n, i++){
-        if (interno(vett[i], rett)){
+        if(interno(vett[i], rett)){
             stampa_punto(vett[i]);
         }
     }
@@ -72,9 +71,9 @@ int main()
     printf("%.3f\n", area_rettangolo(rett));
 
     printf("[COPPIA]\n");
-    indici_max_dist(vett, n, &max_i, &max_j);
-    stampa_punto(vett[max_i]);
-    stampa_punto(vett[max_j]);
+    indici_max_dist(vett, n, &maxI, &maxJ);
+    stampa_punto(vett[maxI]);
+    stampa_punto(vett[maxJ]);
 
     return 0;
 }
@@ -93,11 +92,11 @@ void stampa_punto(struct punto p) {
 }
 
 double distanza(struct punto p1, struct punto p2) {
-       return sqrt((p1.x - p2.x)(p1.x - p2.x) - (p1.y - p2.y)(p1.y - p2.y))
+       return sqrt((p1.x-p2.x)*(p1.x-p2.x) - (p1.y-p2.y)*(p1.y-p2.y));
 }
 
-int interno(struct punto p, struct rettangolo r) {
-    if p.x >= r.A.x && p.y <=  r.B.x && p.y >= r.B.y && p.y <= r.A.y
+int interno(struct rettangolo r, struct punto p) {
+    if (p.x >= r.A.x && p.x <=  r.B.x && p.y >= r.B.y && p.y <= r.A.y)
        return 1;
     else
        return 0;
@@ -111,17 +110,18 @@ double area_rettangolo(struct rettangolo r) {
 return b*h;
 }
 
-int indici_max_dist(punto vett[], int *max_i, int *max_j){
+int indici_max_dist(punto vett[], int lung, int *max_i, int *max_j){
     double max, dist;
     int i, j;
     *max_i=0;
     *max_j=0;
 
-    max = distanza(vett[0]; vett[1]);
-    for(i = 0; i < (n-1); i++)
-       for(j = i+1; i < (n+1), j++){
+    max = distanza(vett[0], vett[1]);
+    for(i = 0; i < lung-1; i++)
+       for(j = i+1; j < lung, j++){
            dist = distanza(vett[i], vett[j]);
            if (dist > max) {
+               max = dist;
                *max_i = vett[i];
                *max_j = vett[j]
            }
