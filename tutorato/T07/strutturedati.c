@@ -29,7 +29,7 @@ int main()
     char s[80];
     int maxI=0,maxJ=0;
 
-    printf("Inserire un valore:\n");
+    printf("Inserire un numero:\n");
     fgets(s, sizeof(s), stdin);
     n = atoi(s);
 
@@ -40,6 +40,7 @@ int main()
      int i;
      double d = 0;
 
+     printf("Inserire valori:\n");
      for(i = 0; i < n; i++) {
         vett[i] = leggi_punto();
       }
@@ -52,7 +53,7 @@ int main()
     printf("[DISTANZE]\n");
     for(i = 0; i < n; i++){
         d = distanza(origine, vett[i]);
-        printf("%.3lf", d);
+        printf("%.3lf\n", d);
        }
 
     printf("Valore A del rettangolo:\n");
