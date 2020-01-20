@@ -119,13 +119,13 @@ void indici_max_dist(struct punto vett[], int lung, int *max_i, int *max_j){
     *max_j=0;
     max = distanza(vett[0], vett[1]);
 
-    for(i = 0; i < lung-1; i++){
-       for(j = i+1; j < lung, j++){
+    for(i = 0; i<lung-1; i++){
+       for(j = i+1; j<lung; j++){
            dist = distanza(vett[i], vett[j]);
            if (dist > max) {
                max = dist;
-               *max_i= vett[i];
-               *max_j= vett[j]
+               *max_i= i;
+               *max_j= j;
            }
          }
 }
