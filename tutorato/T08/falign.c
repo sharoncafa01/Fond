@@ -14,7 +14,7 @@ void falign(FILE  * infile, FILE * outfile, int maxcol)
           ++col;
 
         if (col >= maxcol){
-            put('\n', outfile);
+            putc('\n', outfile);
             col = 0;
         }
      }
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     int i;
     for(i = 1; i <= maxcol; i++)
        printf("%d", i % 10);
-    putc('\n', outfile);
+    putc('\n',stdout);
 
     falign(fp, stdout, maxcol);
     fclose(fp);
