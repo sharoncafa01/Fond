@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     }
 
     maxcol = atoi(argv[2]);  /*determino quante colonne voglio */
-    if (!(fp = fopen(argv[1], "r"))) {
+    if (!(fp = fopen(argv[1], "r"))) {    /*il puntatore fp è l'apertura del file */
         printf("Errore nell'apertura del file &s\n", argv[1]);
         return 1;
     }
@@ -42,8 +42,8 @@ int main(int argc, char *argv[])
        printf("%d", i % 10);
     putc('\n',stdout);
 
-    falign(fp, stdout, maxcol);
-    fclose(fp);
+    falign(fp, stdout, maxcol);  /* utilizziamo fp puntataore stdout(come stdin), maxcol */
+    fclose(fp); /* diamo il comando di chiusare a fp che punta al file */
 
     return 0;
 }
