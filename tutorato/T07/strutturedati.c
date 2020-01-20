@@ -112,7 +112,7 @@ double area_rettangolo(struct rettangolo r) {
      return b*h;
 }
 
-int indici_max_dist(struct punto vett[], int lung, int *max_i, int *max_j){
+void indici_max_dist(struct punto vett[], int lung, int *max_i, int *max_j){
     double max, dist;
     int i, j;
     *max_i=0;
