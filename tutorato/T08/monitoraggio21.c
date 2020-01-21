@@ -17,7 +17,7 @@ float max_temp(struct misura *elenco, int n);
 
 int main(int argc, char *argv[])
 {
-    int elenco[168];
+    struct misura *elenco;
     int n[168];
 
     FILE *infile;
@@ -66,12 +66,12 @@ void stampa_elenco(struct misura *elenco, int n)
     int i;
     if (n <= 6) {
         for (i = n - 1; i >= 0; i--)
-            stampa_riga(elenco + i);
+            puts(elenco + i);
     } else {
         for (i = 0; i < 3; i++)
-            stampa_riga(elenco + i);
+            puts(elenco + i);
         for (i = n - 1; i >= n - 3; i--)
-            stampa_riga(elenco + i);
+            puts(elenco + i);
     }
 }
 
