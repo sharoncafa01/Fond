@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#define MAX_ID_LUNG 10
 
 
 
@@ -79,7 +81,7 @@ int main(int argc, const char *argv[])
         return 1;
     }
     leggi_file(infile);
-    stampa_elenco()
+    stampa_elenco();
     fclose(infile);
 
     return 0;
