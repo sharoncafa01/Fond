@@ -14,19 +14,19 @@ struct misura *leggi_file(FILE *f, int *n);
 void stampa_identificativi(struct misura *elenco, int n);
 
 
+
 int main(int argc, const char *argv[])
 {
-  int n;  
+  int n;
   
   FILE *infile;
   struct misura *elenco;
-    /* termina se il numero di parametri è errato */
+    
     if (argc != 2)
         return 1;
 
-    /* apre il file in lettura */
+    
     infile = fopen(argv[1], "r");
-    /* termina in caso di errore */
     if (infile == NULL) {
         fprintf(stderr, "# Errore apertura file\n");
         return 1;
@@ -46,6 +46,7 @@ struct misura *leggi_file(FILE *f, int *n){
     int nconv;
     int size, i;
     int a, b;
+    
     
     *n = 0;  
 
@@ -77,10 +78,12 @@ struct misura *leggi_file(FILE *f, int *n){
         
         if((*n)>=size) break;
      }
-    if ((*n) < size)
+      if ((*n) < size)
         elenco = realloc(elenco, (*n) * sizeof(*elenco));
 
-    return elenco;        
+    
+     return elenco;   
+
 }
 
 void stampa_identificativi(struct misura *elenco, int n)
@@ -90,3 +93,5 @@ void stampa_identificativi(struct misura *elenco, int n)
     for (i = n - 1; i >= 0; i--)
         printf("%s\n", (elenco + i)->id);
 }
+
+
