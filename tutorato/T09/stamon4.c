@@ -10,17 +10,17 @@ struct misura {
 };
 
 struct misura *leggi_file(FILE *f, int *n);
-void stampa_elenco(struct misura *elenco, int n);
+void stampa_identificativi(struct misura *elenco, int n);
 
 int main(int argc, char *argv[])
 {
     int n;
-    struct misura *elenco;
 
     FILE *infile;
-    
+    struct misura *elenco;
 
-    if (argc != 2) return 1;
+    if (argc != 2) 
+        return 1;
 
     infile = fopen(argv[1], "r");
     if (infile == NULL){
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     elenco=leggi_file(infile, &n);
     printf("[IDENTIFICATIVI]\n");
-    stampa_elenco(elenco, n);
+    stampa_identificativi(elenco, n);
     fclose(infile);
 
 return 0;
@@ -56,7 +56,7 @@ struct misura *leggi_file(FILE *f, int *n)
 
         if (nconv != 11) continue;
 
-        *n++;
+        (*n)++;
     
          if ((*n) >= dim) {
              dim*=2;
@@ -70,7 +70,7 @@ struct misura *leggi_file(FILE *f, int *n)
     return elenco;
 }
 
-void stampa_elenco(struct misura *elenco, int n)
+void stampa_identificativi(struct misura *elenco, int n)
 {
     int i;
 
