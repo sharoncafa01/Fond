@@ -41,25 +41,25 @@ int main(int argc, const char *argv[])
 
 struct misura *leggi_file(FILE *f, int *n){
     
-    struct misura *s,*elenco,*punt_temp;  //puntatori alla struct
+    struct misura *s,*elenco;  //puntatori alla struct
     char buf[1000];
     int nconv;
     int size, i;
     int a, b;
     
-    *n = 0;  //azzero 
+    *n = 0;  
 
     fgets(buf, sizeof(buf), f);
-    sscanf(buf, "%d", a);
+    sscanf(buf, "%d", &a);
     fgets(buf, sizeof(buf), f);
-    sscanf(buf, "%d", b);
-   
+    sscanf(buf, "%d", &b);
+
     if ((b < a) || (a < 0) || (b < 0)) return NULL;
 
-    size = (b - a + 1);
-    elenco = malloc(size * sizeof(*elenco));
+    size = ( b - a +1);
+    elenco=malloc(size * sizeof(*elenco));
 
-    for (i = 0; i < a; i++)
+    for (i = 0; i < a ; i++)
     fgets(buf, sizeof(buf), f);
 
     while(fgets(buf, sizeof(buf), f)){
@@ -75,18 +75,13 @@ struct misura *leggi_file(FILE *f, int *n){
         
         (*n)++;
         
-        if((*n)>= size) break;
+        if((*n)>=size) break;
+     }
+    if ((*n) < size)
+        elenco = realloc(elenco, (*n) * sizeof(*elenco));
 
-
-        if(punt_temp==NULL)return NULL;
-        punt_temp=realloc(elenco,(*n) * sizeof(*elenco));
-        elenco=punt_temp;
-        }
-    
-    elenco = realloc(elenco, (*n) * sizeof(*elenco));
-    return elenco; 
-    }
-    
+    return elenco;        
+}
 
 void stampa_identificativi(struct misura *elenco, int n)
 {
@@ -95,4 +90,3 @@ void stampa_identificativi(struct misura *elenco, int n)
     for (i = n - 1; i >= 0; i--)
         printf("%s\n", (elenco + i)->id);
 }
-
