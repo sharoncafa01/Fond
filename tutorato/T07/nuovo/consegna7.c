@@ -23,10 +23,10 @@ void indici_max_dist(struct punto_t vett[], int lung, int *max_i, int *max_j);
 int main()
 {
     struct punto_t vett[MAXN];
-    struct punto_t origine ={0, 0};
+    struct punto_t origine={0,0};
     struct rettangolo_t rett;
     unsigned int n;
-    int maxI = 0, maxJ = 0;
+    int maxI=0, maxJ=0;
     char s[80];
 
     printf("Inserisci valore n:\n");
@@ -40,12 +40,14 @@ int main()
     int d = 0;
 
     printf("Inserisci valori: \n");
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++){
       vett[i] = leggi_punto();
+    }
 
     printf("[PUNTI]\n");
-    for (i=0; i < n; i++)
-    stampa_punto(vett[i]);
+    for (i=0; i < n; i++){
+        stampa_punto(vett[i]);
+    }
 
     printf("[DISTANZE]\n");
     for(i = 0; i < n; i++){
@@ -59,9 +61,11 @@ int main()
     rett.B = leggi_punto();
 
     printf("[INTERNI]\n");
-    for (i=0; i < n; i++)
-        if (interno(vett[i], rett))
+    for (i=0; i < n; i++){
+        if (interno(vett[i], rett)){
            stampa_punto(vett[i]);
+        }
+    }
 
     printf("[AREA]\n");
     printf("(%.3lf)\n", area_rettangolo(rett));
@@ -74,8 +78,7 @@ int main()
 return 0;
 }
 
-struct punto_t leggi_punto(void)
-{
+struct punto_t leggi_punto(void){
     struct punto_t p;
     char s[80];
     fgets(s, sizeof(s), stdin);
@@ -84,27 +87,22 @@ struct punto_t leggi_punto(void)
     return p;
 }
 
-void stampa_punto (struct punto_t p)
-{
-    printf("(%.3lf %.3lf)\n", p.x, p.y);
+void stampa_punto (struct punto_t p){
+    printf("(%.3lf, %.3lf)\n", p.x, p.y);
 }
 
-double distanza(struct punto_t p1, struct punto_t p2)
-{
+double distanza(struct punto_t p1, struct punto_t p2){
     return sqrt((p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y));
-
 }
 
-int interno(struct punto_t p, struct rettangolo_t r)
-{
-    if (p.x > r.A.x && p.x < r.B.x && p.y > r.B.y && p.y < r.A.y)
+int interno(struct punto_t p, struct rettangolo_t r){
+    if (p.x >= r.A.x && p.x <= r.B.x && p.y >= r.B.y && p.y <= r.A.y)
         return 1;
-    else 
+    else
         return 0;
 }
 
-double area_rettangolo(struct rettangolo_t r)
-{
+double area_rettangolo(struct rettangolo_t r){
     double b, h;
     b = (r.B.x - r.A.x);
     h = (r.A.y - r.B.y);
