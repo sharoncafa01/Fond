@@ -101,7 +101,7 @@ void stampa_elenco(struct misura *elenco, int n)
 //definizione funzione per stampare la riga desiderata della struttura "misura", per poi effettuare la stampa in modo invertito
 void stampa_riga (struct misura *elenco, int *n)
 {
-    printf("%0d-%02d-%02d %02d:%02d:%02d.%03d %s %0.1f %d%% %0.1f\n", 
+    printf("%d-%d-%d %d:%d:%d.%d %s %0.1f %d%% %0.1f\n", 
     elenco[*n].aa, elenco[*n].MM, elenco[*n].gg, elenco[*n].hh, elenco[*n].mm, elenco[*n].ss, 
     elenco[*n].ms,elenco[*n].id, elenco[*n].temp, elenco[*n].umid, elenco[*n].vel);
 }    
