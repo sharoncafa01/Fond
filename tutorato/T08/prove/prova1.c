@@ -66,7 +66,7 @@ void stampa_elenco(struct misura *elenco, int n)
     int i;
     char ide;
     for(i = 0; i < n; i++)
-        ide = (elenco + i)->id;
+        ide = (elenco[i].id);
         if (puts(strchr(ide, 'R')))
             stampa_riga(elenco, &i);
 }
