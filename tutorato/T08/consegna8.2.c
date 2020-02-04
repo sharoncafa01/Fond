@@ -84,9 +84,10 @@ void stampa_elenco(struct misura *elenco, int n)
 }
 
 void stampa_riga(struct misura *elenco, int *n){
-    printf("%0d-%02d-%02d %02d:%02d:%02d.%03d %s %.1f %d%% %.1f\n", elenco[*n].aa, elenco[*n].MM, elenco[*n].gg,
-                                                   elenco[*n].hh, elenco[*n].mm, elenco[*n].ss, elenco[*n].ms,
-                                                   elenco[*n].id, elenco[*n].temp, elenco[*n].umid, elenco[*n].vel);
+    printf("%0d-%02d-%02d %02d:%02d:%02d.%03d %s %.1f %d%% %.1f\n", 
+                    elenco[*n].aa, elenco[*n].MM, elenco[*n].gg,
+                    elenco[*n].hh, elenco[*n].mm, elenco[*n].ss, elenco[*n].ms,
+                    elenco[*n].id, elenco[*n].temp, elenco[*n].umid, elenco[*n].vel);
 }
 
 float max_temp(struct misura *elenco, int n)
