@@ -13,6 +13,7 @@ struct misura {
 void leggi_file(FILE *f, struct misura *elenco, int *n);
 void stampa_elenco(struct misura *elenco, int n);
 void stampa_riga(struct misura *elenco, int *n);
+float min_temp(struct misura *elenco, int n);
 
 int main(int argc, const char *argv[]){
     struct misura elenco[NMAX];
@@ -34,6 +35,9 @@ int main(int argc, const char *argv[]){
     printf("[ELENCO]\n");
     stampa_elenco(elenco, n);
     fclose(infile);
+
+    printf("[MIN-TEMP]\n");
+    printf("%.1f\n", min_temp(elenco, n));
 
 return 0;
 }
@@ -65,7 +69,7 @@ void stampa_elenco(struct misura *elenco, int n)
 {
     int i;
     for(i = 0; i < n; i++)
-            stampa_riga(elenco, &i);
+         stampa_riga(elenco, &i);
 }
 
 void stampa_riga(struct misura *elenco, int *n){
@@ -73,4 +77,17 @@ void stampa_riga(struct misura *elenco, int *n){
                     elenco[*n].AA, elenco[*n].MM, elenco[*n].GG,
                     elenco[*n].hh, elenco[*n].mm, elenco[*n].ss, elenco[*n].ms,
                     elenco[*n].id, elenco[*n].temp, elenco[*n].umid, elenco[*n].vel);
+}
+
+float min_temp(struct misura *elenco, int n)
+{
+    int i;
+    float min_temp;
+    min_temp = elenco[0].temp;
+
+    for(i = 1; i<n; i++)
+        if ((elenco + i)->temp < min_temp)
+            min_temp = (elenco + i)->temp;
+
+return min_temp;
 }
